@@ -6,7 +6,7 @@ from django.views.generic import TemplateView
 
 class FileList(TemplateView):
     template_name = 'index.html'
-    
+
     def get_context_data(self, date=None):
         # Реализуйте алгоритм подготавливающий контекстные данные для шаблона по примеру:
         return {
@@ -17,13 +17,18 @@ class FileList(TemplateView):
             ],
             'date': datetime.date(2018, 1, 1)  # Этот параметр необязательный
         }
+    def postllk():
+        pass
 
+# http://127.0.0.1:5000/name
 
 def file_content(request, name):
+    print(request)
+    print(name) #rrrrr
+
     # Реализуйте алгоритм подготавливающий контекстные данные для шаблона по примеру:
     return render(
         request,
         'file_content.html',
         context={'file_name': 'file_name_1.txt', 'file_content': 'File content!'}
     )
-

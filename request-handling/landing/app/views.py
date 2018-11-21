@@ -14,7 +14,7 @@ def index(request, ):
     count = request.GET.get('from-landing')
     if count == 'origin':
         counter_click['origin'] =+ 1
-        return HttpResponse(<h1> counter_click['origin'] </h1>)
+        # return HttpResponse(<h1> counter_click['origin'] </h1>)
 
     if count == 'test':
         counter_click['test'] =+ 1
