@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime as dt
 from .settings import FILES_PATH
 import os
 from django.shortcuts import render
@@ -7,30 +7,49 @@ from django.views.generic import TemplateView
 
 class FileList(TemplateView):
     template_name = 'index.html'
-    print('111111111111111111111')
 
 
     def get_context_data(self, date=None):
         file_list = []
         files = os.listdir(FILES_PATH)
-        print(files)
         for file in files:
             file_way = os.path.join(FILES_PATH, file)
-            file_info = {
-                'name': file,
-                'ctime': datetime.datetime.fromtimestamp(os.stat(file_way).st_ctime).strftime("%Y %m, %d"),
-                'mtime': os.stat(file_way).st_mtime}
-            file_list.append(file_info)
-            print('--------------+++++++++++++++++++++')
+            create_file_date = dt.fromtimestamp(os.stat(file_way).st_ctime).strftime("%Y-%m-%d")
+            modified_file_date = dt.fromtimestamp(os.stat(file_way).st_mtime).strftime("%Y-%m-%d")
+            print('create_file_date: ',create_file_date)
+            if date == None:
+                file_info = {
+                    'name': file,
+                    'ctime': dt.fromtimestamp(os.stat(file_way).st_ctime).strftime("%Y %B, %d  %H:%M"),
+                    'mtime': dt.fromtimestamp(os.stat(file_way).st_mtime).strftime("%Y %B, %d  %H:%M"),}
+                file_list.append(file_info)
+
+            if date == create_file_date or date == modified_file_date:
+                print('heeeeeeeeerrrrrrrrrrrrreeee')
+                # print('2018-11-18', True, create_file_date)
+                file_info = {
+                    'name': file,
+                    'ctime': {
+                        'date' : dt.fromtimestamp(os.stat(file_way).st_ctime).strftime("%Y %B, %d  %H:%M").date(),
+                        'time' : dt.fromtimestamp(os.stat(file_way).st_ctime).strftime("%H:%M")
+                    },
+                    'mtime':{
+                        'date' : dt.fromtimestamp(os.stat(file_way).st_mtime).strftime("%Y %B, %d  %H:%M").date(),
+                        'time' : dt.fromtimestamp(os.stat(file_way).st_ctime).strftime("%H:%M")
+                    } }
+                file_list.append(file_info)
+
+                # print('date ', date)
+                #
+                # print('2 ', dt.fromtimestamp(os.stat(file_way).st_ctime).strftime("%Y %m, %d"))
+                # if date == dt.fromtimestamp(os.stat(file_way).st_ctime).strftime("%Y %m, %d"):
+
         print(file_list)
-        # datetime.datetime.fromtimestamp(os.stat(file_way).st_ctime).strftime("%Y %m, %d")
-        # if not date:
-        #     print(files)
-    # Реализуйте алгоритм подготавливающий контекстные данные для шаблона по примеру:
         return {
-            'files': file_list
-            # 'date': datetime.date(2018, 1, 1)  # Этот параметр необязательный
+            'files': file_list,
+            'date': date #необязательно
         }
+
 
 
 
