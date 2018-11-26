@@ -103,6 +103,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
+INFLATION_RUSSIA = os.path.join(BASE_DIR, 'inflation_russia.csv')
 
 STATIC_URL = '/static/'
 

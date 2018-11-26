@@ -3,7 +3,7 @@
 {% block content %}
     <h2>Список отчетов:</h2>
     {% if date %}
-      <h4>{{ date }}</h4>
+      <h4>{{ date|slice:":10" }}</h4>
       <a class="waves-effect waves-light btn" href="{% url "file_list" %}">Убрать фильтр по дате</a>
     {% endif %}
     <ul class="collection">
