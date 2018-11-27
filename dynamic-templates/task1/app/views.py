@@ -18,7 +18,6 @@ class InflationView(TemplateView):
             reader = csv.reader(csvfile, delimiter = ';')
             reader = list(reader)
             temp = reader.pop(0)
-            convert_float = lambda x: '-' if '' else float(x)
 
             for stat_row in reader:  # reader[1:] со второго элемента
                 print('stat_row ',stat_row)
