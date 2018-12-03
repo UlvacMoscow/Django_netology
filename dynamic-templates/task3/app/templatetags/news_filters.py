@@ -46,5 +46,5 @@ def format_num_comments(value):
 def format_selftext(text, count):
     temp = text.split()
     if len(temp) - 1 > 2 * count:
-        return '{} ... {}'.format(temp[:count], temp[-count:])
+        return '{0} ... {1}'.format(' '.join(temp[:count]), ' '.join(temp[-count:]))
     return text
