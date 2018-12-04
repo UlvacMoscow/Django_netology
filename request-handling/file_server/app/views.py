@@ -43,7 +43,6 @@ def file_content(request, name):
                 with open(os.path.join(FILES_PATH, name), encoding='utf8') as necessary_file:
                     file_content = necessary_file.read()
 
-
     try:
         return render(
                    request,
