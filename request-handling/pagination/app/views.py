@@ -24,8 +24,6 @@ def bus_stations(request):
 
     paginator = Paginator(all_stations, 10)
     page = paginator.get_page(page_number)
-    print('1', paginator.page_range, '1')
-    print('2', paginator.get_page(2).object_list,'2')
 
     if page.has_previous():
         prev_url = '?page={}'.format(page.previous_page_number())
@@ -36,8 +34,7 @@ def bus_stations(request):
     else:
         next_url = ''
 
-    print(BUS_STATION_CSV)
-    return render(request, 'index.html', context = {'bus_stations': page.object_list,
+    return render(request, 'index.html', context = {'bus_stations': page,
                                                     'current_page': page_number,
                                                     'prev_page_url': prev_url,
                                                     'next_page_url': next_url,})
