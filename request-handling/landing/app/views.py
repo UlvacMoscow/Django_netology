@@ -9,25 +9,22 @@ counter_click = Counter()
 
 
 def index(request):
-    if request.GET.get('from-landing') == 'origin':
-        counter_click['origin'] =+ 1
+    from_landing = request.GET.get('from-landing')
+    counter_click[from_landing] =+ 1
 
-    if request.GET.get('from-landing') == 'test':
-        counter_click['test'] =+ 1
-        
     return render_to_response('index.html')
 
 
 def landing(request):
     landing = 'landing.html'
+    ab_test_arg = request.GET.get('ab-test-arg')
 
-    if request.GET.get('ab-test-arg') == 'origin':
-        counter_show['origin'] =+ 1
-
-    if request.GET.get('ab-test-arg') == 'test':
+    if ab_test_arg == 'test':
         landing = 'landing_alternate.html'
-        counter_show['test'] =+ 1
-
+        counter_show[ab_test_arg] =+ 1
+        return render_to_response(landing)
+        
+    counter_show[ab_test_arg] =+ 1
     return render_to_response(landing)
 
 
