@@ -37,24 +37,15 @@ class FileList(TemplateView):
 
 
 def file_content(request, name):
-    files = os.listdir(FILES_PATH)
-    for file in files:
-        if file == name:
-                with open(os.path.join(FILES_PATH, name), encoding='utf8') as necessary_file:
-                    file_content = necessary_file.read()
-
     try:
-        return render(
-                   request,
-                   'file_content.html',
-                   context={'file_name': name, 'file_content': file_content}
-               )
-    except UnboundLocalError:
+        with open(os.path.join(FILES_PATH, name), encoding='utf8') as necessary_file:
+            file_content = necessary_file.read()
+    except FileNotFoundError:
         name = 'Файл {} не существует'.format(name)
         file_content = ''
-        context={'file_name': name, 'file_content': file_content}
-        return render(
-                   request,
-                   'file_content.html',
-                   context={'file_name': name, 'file_content': file_content}
-               )
+
+    return render(
+               request,
+               'file_content.html',
+               context={'file_name': name, 'file_content': file_content}
+           )
