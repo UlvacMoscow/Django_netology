@@ -37,12 +37,13 @@ class FileList(TemplateView):
 
 
 def file_content(request, name):
-    try:
-        with open(os.path.join(FILES_PATH, name), encoding='utf8') as necessary_file:
-            file_content = necessary_file.read()
-    except FileNotFoundError:
+    if not os.path.isfile(os.path.join(FILES_PATH, name)):
         name = 'Файл {} не существует'.format(name)
         file_content = ''
+        
+    else:
+        with open(os.path.join(FILES_PATH, name), encoding='utf8') as necessary_file:
+            file_content = necessary_file.read()
 
     return render(
                request,
