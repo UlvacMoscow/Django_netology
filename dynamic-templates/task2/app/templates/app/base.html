@@ -24,9 +24,11 @@
         <a href="{% url 'home' %}" class="brand-logo">
         Компьютеры</a>
         <ul class="right hide-on-med-and-down">
-          <li class="{% block activate_examles %}{% endblock %}"><a href="{% url 'examples' %}">Примеры</a></li>
-          <li class="{% block activate_contacts %}{% endblock %}"><a href="{% url 'contacts' %}">Контакты</a></li>
-          <li class="{% block activate_about %}{% endblock %}"><a href="{% url 'about' %}">О проекте</a></li>
+            {% with url_name=request.resolver_match.url_name %}
+            <li class="{% if url_name == 'examples' %}active{% endif %}"><a href="{% url 'examples' %}">Примеры</a></li>
+            <li class="{% if url_name == 'contacts' %}active{% endif %}"><a href="{% url 'contacts' %}">Контакты</a></li>
+            <li class="{% if url_name == 'about' %}active{% endif %}"><a href="{% url 'about' %}">О проекте</a></li>
+            {% endwith %}
         </ul>
       </div>
     </nav>
