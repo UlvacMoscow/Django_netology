@@ -31,14 +31,20 @@
       </div>
     </nav>
 
-    {% block content %}
+
+
         <div class="row">
           <div class="col s12">
-            <h1 class="col s12">Компьютеры Apple</h1>
-            <img src='{% static "steve.jpg" %}' alt="Apple">
+            <h1 class="col s12">
+            {% block content_title %}
+            {% endblock %}
+            </h1>
+            {% block content %}
+                <img src='{% static "steve.jpg" %}' alt="Apple">
+            {% endblock %}
           </div>
         </div>
-    {% endblock %}
+
 
   </body>
 </html>

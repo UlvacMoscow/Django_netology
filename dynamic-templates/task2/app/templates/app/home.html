@@ -5,12 +5,10 @@
         Компьютеры Apple
     {% endblock %}
 
+    {% block content_title %}
+        Компьютеры Apple
+    {% endblock %}
 
     {% block content %}
-        <div class="row">
-          <div class="col s12">
-            <h1 class="col s12">Компьютеры Apple</h1>
-            <img src='{% static "steve.jpg" %}' alt="Apple">
-          </div>
-        </div>
+        <img src='{% static "steve.jpg" %}' alt="Apple">
     {% endblock content %}
