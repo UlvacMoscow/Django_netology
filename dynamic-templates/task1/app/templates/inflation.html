@@ -19,37 +19,21 @@
         <ul class="col s12 m8">
             <table class="bordered">
                 <thead>
-                    {% for column in columns %}
-                        {% if column == 'Суммарная'%}
-                            <th class="grey darken-1">{{ column }}</th>
+                    {% for fieldname in reader.fieldnames %}
+                        {% if fieldname == "Суммарная" %}
+                            <th class="">Всего</th>
                         {% else %}
-                            <th class="">{{ column }}</th>
+                            <th class=""> {{ fieldname }} </th>
                         {% endif %}
                     {% endfor %}
                 </thead>
                 <tbody>
-                    {% for row in inflation %}
-                        <tr>
-                            {% for key, value in row.items %}
-                                {% if key == 'Суммарная' %}
-                                    <td class="grey darken-1">{{ value }}</td>
-                                {% elif value < 0 %}
-                                    <td class="green darken-2">{{ value }}</td>
-                                {% elif value < 1 %}
-                                    <td class="">{{ value }}</td>
-                                {% elif value < 2 %}
-                                    <td class="red lighten-4">{{ value }}</td>
-                                {% elif  value <= 5 %}
-                                    <td class="red lighten-1">{{ value }}</td>
-                                {% elif value > 5 %}
-                                    <td class="red darken-4">{{ value }}</td>
-                                {% else %}
-                                    <td class="">{{ value }}</td>
-                                {% endif %}
-
-                            {% endfor %}
-                        </tr>
-                    {% endfor %}
+                    <tr>
+                        {% for key, stats in reader.items %}
+                                <p>111 {{ stats}}</p>
+                                <td>{{ key }} {{ stats }}</td>
+                        {% endfor %}
+                    </tr>
                 </tbody>
             </table>
        <!-- Ваша логика -->
