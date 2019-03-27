@@ -29,9 +29,8 @@
                 </thead>
                 <tbody>
                     <tr>
-                        {% for key, stats in reader.items %}
-                                <p>111 {{ stats}}</p>
-                                <td>{{ key }} {{ stats }}</td>
+                        {% for r in reader %}
+                            <td>111 {{ r.Год }}</td>
                         {% endfor %}
                     </tr>
                 </tbody>

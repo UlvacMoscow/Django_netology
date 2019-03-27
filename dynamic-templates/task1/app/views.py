@@ -15,15 +15,15 @@ class InflationView(TemplateView):
         with open (settings.INFLATION_RUSSIA, encoding='utf8') as csvfile:
             reader = csv.DictReader(csvfile, delimiter = ';')
             print('111111 ', dir(reader))
-            print('22222  ',reader.fieldnames)
-            print('22222  ',reader.__iter__)
-            # for r in reader:
-            #     print(r)
+            # print('22222  ',reader.fieldnames)
+            # print('22222  ',reader.restkey)
+            for r in reader:
+                print(r['Год'])
                 # print(r.items())
                 # for it in r.items():
                 #     print(it[1])
 
 
             context = {'reader': reader}
-        return render(request, self.template_name,
-                      context)
+            return render(request, self.template_name,
+                        context)
