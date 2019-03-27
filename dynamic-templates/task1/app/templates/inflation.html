@@ -1,3 +1,5 @@
+{% load color_filters %}
+
 <!DOCTYPE html>{% load static %}
 <html>
   <head>
@@ -30,11 +32,11 @@
                 <tbody>
                     {% for row in reader %}
                         <tr>
-                           {% for stat in row.values %}
+                           {% for key, stat in row.items %}
                                {% if stat == '' %}
                                     <td>-</td>
                                {% else %}
-                                    <td>{{ stat }}</td>
+                                    <td bgcolor={{ stat|color_filter:key }}>{{ stat }}</td>
                                {% endif%}
                            {% endfor %}
                         </tr>
