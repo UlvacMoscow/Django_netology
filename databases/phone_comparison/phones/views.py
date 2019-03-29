@@ -1,23 +1,25 @@
 from django.shortcuts import render
-from .models import Phone, Nokia, Xiomi
+from .models import Asus, Nokia, Xiomi
 
 
 def show_catalog(request):
-    phones = Phone.objects.all()
-    all_nokia = Nokia.objects.all()
-    all_xiomi = Xiomi.objects.all()
+    asus = Asus.objects.all()
+    nokia = Nokia.objects.all()
+    xiaomi = Xiomi.objects.all()
     return render(
         request,
         'catalog.html',
         context={
-            'phones':phones
+            'asus': asus,
+            'nokia': nokia,
+            'xiaomi': xiaomi
         }
     )
 
 
 def show_phones(request):
     phones = Nokia.objects.all()
-    
+
     return render(
         request,
         'phones.html',
@@ -25,6 +27,3 @@ def show_phones(request):
             'phones':phones
         }
     )
-
-
-
