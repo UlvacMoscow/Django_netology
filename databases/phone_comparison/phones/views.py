@@ -1,11 +1,12 @@
 from django.shortcuts import render
-from .models import Asus, Nokia, Xiomi
+from .models import Asus, Nokia, Xiaomi
 
 
 def show_catalog(request):
     asus = Asus.objects.all()
     nokia = Nokia.objects.all()
-    xiaomi = Xiomi.objects.all()
+    xiaomi = Xiaomi.objects.all()
+    all_models_phone = [*asus, *nokia, xiaomi]
     return render(
         request,
         'catalog.html',
