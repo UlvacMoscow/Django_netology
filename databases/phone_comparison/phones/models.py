@@ -10,22 +10,19 @@ class Phone(models.Model):
     battery = models.IntegerField('battery', default=100)
     memory = models.IntegerField('memory', default=0)
 
-    def __str__(self):
-        return self.model_name
-
 
 class Nokia(Phone):
     scan_eye = models.BooleanField('scan_eye', default=False)
     def __str__(self):
-        return self.name
+        return self.brand + self.model_name
 
 
 class Xiaomi(Phone):
     scan_finger = models.BooleanField('scan_finger', default=False)
     def __str__(self):
-        return self.name
+        return self.brand + self.model_name
 
 class Asus(Phone):
     teleport = models.BooleanField('teleport', default=False)
     def __str__(self):
-        return self.name
+        return self.brand + self.model_name
