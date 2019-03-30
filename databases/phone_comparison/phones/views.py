@@ -6,14 +6,12 @@ def show_catalog(request):
     asus = Asus.objects.all()
     nokia = Nokia.objects.all()
     xiaomi = Xiaomi.objects.all()
-    all_models_phone = [*asus, *nokia, xiaomi]
+    all_models_phone = [*asus, *nokia, *xiaomi]
     return render(
         request,
         'catalog.html',
         context={
-            'asus': asus,
-            'nokia': nokia,
-            'xiaomi': xiaomi
+            'phones': all_models_phone,
         }
     )
 

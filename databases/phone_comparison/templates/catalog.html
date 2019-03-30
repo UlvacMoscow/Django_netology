@@ -1,38 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Каталог{% endblock %}
-{% block content %}
-    <div class="container">
-        <div class="header">
-            <h1>Сравнение телефонов</h1>
-        </div>
-    </div>
-    <table>
-        <thead>
-          <tr>
-              <th>Name</th>
-              <th>Item Name</th>
-              <th>Item Price</th>
-          </tr>
-        </thead>
 
-        <tbody>
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-          </tr>
-        </tbody>
-      </table>
+
+{% block title%}
+    Каталог телефонов
+{% endblock %}
+
+{% block content %}
+    <h3>Каталог телефонов</h3>
+    {% for phone in phones %}
+        <a class="phone">{{ phone.brand }} {{ phone.model_name }}</a>
+    {% endfor %}
+    <a type="button" name="button" href='{% url "show_phones" %}'> Перейти к сравнению телефонов</a>
 {% endblock %}

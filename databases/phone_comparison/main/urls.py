@@ -20,6 +20,6 @@ from phones.views import show_catalog, show_phones
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', show_catalog),
-    path('phones/', show_phones)
+    path('', show_catalog, name='show_catalog'),
+    path('phones/', show_phones, name='show_phones')
 ]
