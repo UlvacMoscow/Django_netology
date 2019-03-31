@@ -12,5 +12,5 @@
     {% for phone in phones %}
         <a class="phone">{{ phone.brand }} {{ phone.model_name }}</a>
     {% endfor %}
-    <a type="button" name="button" href='{% url "show_phones" %}'> Перейти к сравнению телефонов</a>
+    <a type="button" name="button" href='{% url "compression_phones" %}'> Перейти к сравнению телефонов</a>
 {% endblock %}

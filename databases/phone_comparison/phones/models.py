@@ -11,6 +11,10 @@ class Phone(models.Model):
     memory = models.IntegerField('memory', default=0)
 
 
+    def get_all_phones():
+        return Phone.objects.all()
+
+
 class Nokia(Phone):
     scan_eye = models.BooleanField('scan_eye', default=False)
     def __str__(self):

@@ -1,27 +1,28 @@
 from django.shortcuts import render
-from .models import Asus, Nokia, Xiaomi
+from .models import Phone, Asus, Nokia, Xiaomi
+from django.http import HttpResponse
 
 
 def show_catalog(request):
-    asus = Asus.objects.all()
-    nokia = Nokia.objects.all()
-    xiaomi = Xiaomi.objects.all()
-    all_models_phone = [*asus, *nokia, *xiaomi]
+    phones = Phone.get_all_phones()
+    print(dir(request.GET.get))
+    print('111111  ', request.GET.get('phones'))
     return render(
         request,
         'catalog.html',
         context={
-            'phones': all_models_phone,
+            'phones': phones,
         }
     )
 
 
-def show_phones(request):
-    phones = Nokia.objects.all()
+def compression_phones(request):
+    # phones = Nokia.objects.all()
+    phones = Phone.get_all_phones()
 
     return render(
         request,
-        'phones.html',
+        'compression_phones.html',
         context={
             'phones':phones
         }
