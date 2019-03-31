@@ -8,7 +8,22 @@
             <h1>Телефон</h1>
         </div>
         <div class="content">
-
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="card" style="width: 18rem;">
+                            <img src="{{ phone.image }}" alt="{{ phone.name }}" style="height: 540px;">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">{{ phone.id }}</li>
+                                <li class="list-group-item">{{ phone.name }}</li>
+                                <li class="list-group-item">{{ phone.price }}</li>
+                                <li class="list-group-item">{{ phone.release_date }}</li>
+                                <li class="list-group-item">{{ phone.lte_exists }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

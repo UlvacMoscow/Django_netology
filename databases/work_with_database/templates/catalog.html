@@ -10,8 +10,10 @@
 
         <div class="sort-block">
             {# Здесь должен быть раздел с сортировкой #}
-            <button type="button" class="btn btn-danger" style="margin:10px;">Отсортировать по цене</button>
-            <button type="button" class="btn btn-warning" style="margin:10px;">Отсортировать по алфавиту</button>
+            <a type="button" href="{% url 'catalog' %}?sort=max_price" class="btn btn-danger" style="margin:10px;">Отсортировать по возрастанию цены</a>
+            <a type="button" href="{% url 'catalog' %}?sort=min_price" class="btn btn-danger" style="margin:10px;">Отсортировать по убыванию цены</a>
+
+            <a type="button" href="{% url 'catalog' %}?sort=name" class="btn btn-warning" style="margin:10px;">Отсортировать по алфавиту</a>
         </div>
 
         <div class="content">
@@ -20,14 +22,11 @@
                     {% for phone in phones %}
                     <div class="col-sm">
                         <div class="card" style="width: 18rem;">
-                            <img src="{{ phone.image }}" alt="{{ phone.name }}" style="height: 540px;">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">{{ phone.id }}</li>
-                                <li class="list-group-item">{{ phone.name }}</li>
                                 <li class="list-group-item">{{ phone.price }}</li>
-                                <li class="list-group-item">{{ phone.release_date }}</li>
-                                <li class="list-group-item">{{ phone.lte_exists }}</li>
+                                <li class="list-group-item"><h2>{{ phone.name }}</h2></li>
                             </ul>
+                            <img src="{{ phone.image }}" alt="{{ phone.name }}" style="height: 540px;">
                         </div>
                     </div>
                     {% endfor %}

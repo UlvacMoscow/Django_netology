@@ -24,7 +24,7 @@ import phones.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('catalog/', phones.views.show_catalog),
-    url(r'^catalog/(?P<slug>[\w-]+)/$', phones.views.show_product),
+    path('catalog/', phones.views.show_catalog, name='catalog'),
+    url(r'^catalog/(?P<slug>[\w-]+)/$', phones.views.show_product,name='product'),
     # static(settings.MEDIA_URL, document_root=settings.MEDIA_URL),
 ]

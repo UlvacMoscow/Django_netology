@@ -11,3 +11,12 @@ class Phone(models.Model):
 
     def phones():
         return Phone.objects.all()
+
+    def max_price():
+        return Phone.objects.order_by('price').all()
+
+    def min_price():
+        return Phone.objects.order_by('-price').all()
+
+    def sort_name():
+        return Phone.objects.order_by('name').all()
