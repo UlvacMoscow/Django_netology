@@ -1,11 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<script type="text/javascript">
+    const form_phone = document.getElementsByClassName('form_phone');
+
+    function spam() {
+        alert('11111111111');
+    }
+
+    for (const phone of form_phone) {
+        phone.addEventListener('onchange', spam);
+    }
+
+</script>
 
 <div class="container">
     <div class="row">
         <div class="col-sm">
-            <select class="custom-select custom-select-lg col-sm">
+            <select class="custom-select custom-select-lg col-sm form_phone">
                 <option selected>Open this select menu</option>
                 {% for phone in phones %}
                 <option value="{{ phone.id }}">{{ phone.brand }} {{ phone.model_name }}</option>
@@ -13,13 +25,14 @@
             </select>
         </div>
         <div class="col-sm">
-            <select class="custom-select custom-select-lg col-sm">
+            <select class="custom-select custom-select-lg col-sm form_phone">
                 <option selected>Open this select menu</option>
                 {% for phone in phones %}
                 <option value="{{ phone.id }}">{{ phone.brand }} {{ phone.model_name }}</option>
                 {% endfor %}
             </select>
         </div>
+        <a type="button" href="#">Сравнить</a>
     </div>
 </div>
 
