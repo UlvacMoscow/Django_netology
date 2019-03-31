@@ -19,7 +19,8 @@ def show_catalog(request):
 def compression_phones(request):
     # phones = Nokia.objects.all()
     phones = Phone.get_all_phones()
-
+    print(dir(phones))
+    print(phones.count)
     return render(
         request,
         'compression_phones.html',

@@ -14,19 +14,17 @@ class Phone(models.Model):
     def get_all_phones():
         return Phone.objects.all()
 
+    def __str__(self):
+        return self.brand + self.model_name
 
 class Nokia(Phone):
     scan_eye = models.BooleanField('scan_eye', default=False)
-    def __str__(self):
-        return self.brand + self.model_name
+
 
 
 class Xiaomi(Phone):
     scan_finger = models.BooleanField('scan_finger', default=False)
-    def __str__(self):
-        return self.brand + self.model_name
+
 
 class Asus(Phone):
     teleport = models.BooleanField('teleport', default=False)
-    def __str__(self):
-        return self.brand + self.model_name

@@ -7,8 +7,15 @@
     display: block;
     background-color: #d1c4e9;
     width: auto;
+    border-color: 5px solid red;
 }
 
-.container    {
+.rew    {
     background-color: blue;
+}
+
+.custom-select    {
+    padding: 5px;
+    display: block;
+    border-color: 5px solid red;
 }
