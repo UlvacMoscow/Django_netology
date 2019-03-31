@@ -115,6 +115,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+PHONE_CSV = os.path.join(BASE_DIR, 'phones.csv')
+MEDIA_URL = "/media/"
+
 try:
     from .settings_local import *
 except ImportError:
