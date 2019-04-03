@@ -7,13 +7,13 @@
         <div class="header">
             <h1><a href="/books">Каталог</a></h1>
         </div>
-        {% for bk in list_book %}
+        {% for object in object_list %}
             <div class="row">
                 <div class="book col-md-4">
-                    <h2>{{ bk.name }}</h2>
-                    <p>{{ bk.author }}</p>
-                    <p>{{ bk.pub_date }}</p>
-                </div>    
+                    <h2><a href="{{object.get_abdolute_url}}">{{ object.name }}</a></h2>
+                    <p>{{ object.author }}</p>
+                    <p>{{ object.pub_date }}</p>
+                </div>
             </div>
         {% endfor %}
         </div>

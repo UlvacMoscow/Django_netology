@@ -19,5 +19,6 @@ from books.views import BookListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('books/', BookListView.as_view())
+    path('books/', BookListView.as_view()),
+    path('books/<str:date>/', BookListView.as_view())
 ]
