@@ -21,8 +21,6 @@ def landing(request):
 
     if ab_test_arg == 'test':
         landing = 'landing_alternate.html'
-        counter_show[ab_test_arg] =+ 1
-        return render_to_response(landing)
         
     counter_show[ab_test_arg] =+ 1
     return render_to_response(landing)

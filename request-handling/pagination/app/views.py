@@ -1,4 +1,4 @@
-from .settings import BUS_STATION_CSV
+from django.conf import settings
 import csv
 from django.shortcuts import render_to_response, redirect, render
 from django.urls import reverse
@@ -14,15 +14,10 @@ def bus_stations(request):
     all_stations = []
     page_number = request.GET.get('page', 1)
 
-    with open(BUS_STATION_CSV, encoding='cp1251') as csvfile:
+    with open(settings.BUS_STATION_CSV, encoding='cp1251') as csvfile:
         reader = csv.DictReader(csvfile)
-        for info in reader:
-            bus_stations = {'Name' : info['Name'],
-                            'Street': info['Street'],
-                            'District': info['District']}
-            all_stations.append(bus_stations)
-
-    paginator = Paginator(all_stations, 10)
+        reader = list(reader)
+    paginator = Paginator(reader, 10)
     page = paginator.get_page(page_number)
 
     if page.has_previous():

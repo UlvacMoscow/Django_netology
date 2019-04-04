@@ -38,15 +38,15 @@ class FileList(TemplateView):
 
 def file_content(request, name):
     if not os.path.isfile(os.path.join(FILES_PATH, name)):
-        name = 'Файл {} не существует'.format(name)
-        file_content = ''
-        
+        error = 'Файл {} не существует'.format(name)
+        context ={'file_name': error, 'file_content': ''}
+
     else:
         with open(os.path.join(FILES_PATH, name), encoding='utf8') as necessary_file:
             file_content = necessary_file.read()
-
+            context ={'file_name': name, 'file_content': file_content}
     return render(
                request,
                'file_content.html',
-               context={'file_name': name, 'file_content': file_content}
+               context
            )
