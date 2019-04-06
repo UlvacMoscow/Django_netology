@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+# from django.conf import settings_local
+# from .settings_local import SECRET_KEY1, DATABASES1
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -127,4 +129,3 @@ try:
     from .settings_local import *
 except ImportError:
     pass
-
