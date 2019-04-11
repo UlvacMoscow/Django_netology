@@ -1,6 +1,7 @@
 from django.views import generic
 from .models import Book
 from django.shortcuts import get_object_or_404
+from django.core.paginator import Paginator
 
 
 
@@ -24,6 +25,11 @@ class BookFilterDate(BookListView):
     def get_context_data(self):
         category_url = self.kwargs['date']
         queryset = Book.objects.filter(pub_date=category_url)
-        print('111111111111111 ', Paginator)
-        context = {'object_list' : queryset}
+        query_for_paginate = Book.objects.all().order_by('-pub_date')
+        paginator_class = Paginator(query_for_paginate, 1)
+        print('11111111111111 ', dir(paginator_class))
+        page = paginator_class.get_page(category_url)
+        context = {'paginator' : paginator_class}
+        context['object_list'] = queryset
+        context['books'] = page
         return context

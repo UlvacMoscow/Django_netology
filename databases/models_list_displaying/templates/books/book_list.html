@@ -16,10 +16,7 @@
                 </div>
             </div>
         {% endfor %}
+        <a href="{{ next_page_number }}">{{ books.next_page_number }}</a>
         </div>
+
 {% endblock %}
-
-{% if is_paginated %}
-<a href="#">1111111111111</a>
-
-{% endif %}
