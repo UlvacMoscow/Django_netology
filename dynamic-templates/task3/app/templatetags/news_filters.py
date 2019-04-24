@@ -6,15 +6,12 @@ register = template.Library()
 @register.filter
 def format_date(value):
     now = dt.now()
-    print('111111111 ', now)
     then = dt.fromtimestamp(value)
-    print('1111111112 ', then)
     delta = now - then
-    print('1111111113 ', delta)
     hours = delta.seconds // 3600
-    print('1111111114 ', dir(hours))
+    minutes, hours = delta.seconds // 60, delta.seconds // 3600
 
-    if delta.seconds // 60 < 10:
+    if minutes < 10:
         return 'Только что'
     elif hours < 24:
         return '{} часов назад'.format(hours)
