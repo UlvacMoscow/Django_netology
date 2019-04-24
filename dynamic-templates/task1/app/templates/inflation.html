@@ -21,12 +21,8 @@
         <ul class="col s12 m8">
             <table class="bordered">
                 <thead>
-                    {% for fieldname in reader.0.keys %}
-                        {% if fieldname == "Суммарная" %}
-                            <th class="">Всего</th>
-                        {% else %}
-                            <th class=""> {{ fieldname }} </th>
-                        {% endif %}
+                    {% for fieldname in keys_table %}
+                        <th class=""> {{ fieldname }} </th>
                     {% endfor %}
                 </thead>
                 <tbody>
