@@ -1,5 +1,5 @@
 from datetime import datetime as dt
-from .settings import FILES_PATH
+from django.conf import settings
 import os
 from django.shortcuts import render, render_to_response
 from django.views.generic import TemplateView
@@ -17,8 +17,8 @@ class FileList(TemplateView):
             get_date_obj = parse(date).strftime("%Y-%m-%d")
 
 
-        for file in os.listdir(FILES_PATH):
-            file_stats = os.stat(os.path.join(FILES_PATH, file))
+        for file in os.listdir(settings.FILES_PATH):
+            file_stats = os.stat(os.path.join(settings.FILES_PATH, file))
             file_info = {
                 'name': file,
                 'ctime': dt.fromtimestamp(file_stats.st_ctime),
@@ -37,12 +37,12 @@ class FileList(TemplateView):
 
 
 def file_content(request, name):
-    if not os.path.isfile(os.path.join(FILES_PATH, name)):
+    if not os.path.isfile(os.path.join(settings.FILES_PATH, name)):
         error = 'Файл {} не существует'.format(name)
-        context ={'file_name': error, 'file_content': ''}
+        context ={'file_name': name, 'file_content': '', 'error' : error}
 
     else:
-        with open(os.path.join(FILES_PATH, name), encoding='utf8') as necessary_file:
+        with open(os.path.join(settings.FILES_PATH, name), encoding='utf8') as necessary_file:
             file_content = necessary_file.read()
             context ={'file_name': name, 'file_content': file_content}
     return render(
