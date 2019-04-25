@@ -30,9 +30,16 @@
                 {% for phone in phones %}
                 <option value="{{ phone.id }}">{{ phone.brand }} {{ phone.model_name }}</option>
                 {% endfor %}
+
             </select>
         </div>
+        <button class="test" id="test1" type="button" name="button">Test</button>
         <a type="button" href="#">Сравнить</a>
+        <script>
+            $('#test1').on('click', function ()    {
+                console.log('vtyztn');
+            });
+        </script>
     </div>
 </div>
 
