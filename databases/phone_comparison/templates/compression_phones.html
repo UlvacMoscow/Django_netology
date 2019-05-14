@@ -17,7 +17,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm">
-            <select class="custom-select custom-select-lg col-sm form_phone1">
+            <select class="custom-select custom-select-lg col-sm form_phone1" href="#?phone={{phone.id}}">
                 {% for phone in phones %}
                 <option value="{{ phone.id }}">{{ phone.brand }} {{ phone.model_name }}</option>
                 {% endfor %}
@@ -31,23 +31,25 @@
 
             </select>
         </div>
-        <a id="compression" type="button" href="#">Сравнить</a>
+        <a id="compression" type="button" href="{% url "compression_phones" %} ">Сравнить</a>
 
     </div>
 </div>
 
-{% if info_phone %}
+{% if info_phone1 %}
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                описание
-                {{info_phone}}
-                <p>{{info_phone.model_name}}</p>
-                <p>{{info_phone.brand}}</p>
-                <p>{{info_phone.processor}}</p>
+                {{info_phone1}}
+                <p>{{info_phone1.model_name}}</p>
+                <p>{{info_phone1.brand}}</p>
+                <p>{{info_phone1.processor}}</p>
             </div>
             <div class="col-sm">
-                описание
+                {{info_phone2}}
+                <p>{{info_phone2.model_name}}</p>
+                <p>{{info_phone2.brand}}</p>
+                <p>{{info_phone2.processor}}</p>
             </div>
         </div>
     </div>
