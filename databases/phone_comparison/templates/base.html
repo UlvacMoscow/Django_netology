@@ -29,29 +29,39 @@
 
 
     <script type="text/javascript">
-        $('#test1').on('click', function ()    {
-            console.log('test');
-        });
-        $('.form_phone1').on('change', function() {
-              alert( this.value );
-              data = {
-                  'number_phone' : this.value
-              }
-              return $.ajax({
-                  url: '/compression_phones/',
-                  type: 'get',
-                  data: data,
-                  success: function() {
-                      console.log('успех');
-                      
-                }
+        // var data;
+        // $('.form_phone1').on('change', function() {
+        //       data = {
+        //           'number_phone' : this.value
+        //       }
+        //       return $.ajax({
+        //           url: '/compression_phones/',
+        //           type: 'get',
+        //           data: data,
+        //           success: function() {
+        //               console.log('успех');
+        //
+        //         }
+        //
+        //       })
+        // });
 
-              })
-        });
-        $('.form_phone2').on('change', function() {
-              alert( this.value );
-        });
-
+// another way
+    $('a#compression').on('click', function() {
+        console.log($('select.form_phone1').val());
+        data = {
+            'phone_1' : $('select.form_phone1').val(),
+            'phone_2' : $('select.form_phone2').val()
+        }
+        return $.ajax({
+            url: '/compression_phones/',
+            type: 'get',
+            data: data,
+            success: function() {
+                console.log('успех');
+          }
+       })
+    })
     </script>
     <!--JavaScript at end of body for optimized loading-->
 

@@ -31,24 +31,26 @@
 
             </select>
         </div>
-        <button class="test" id="test1" type="button" name="button">Test</button>
-        <a type="button" href="#">Сравнить</a>
+        <a id="compression" type="button" href="#">Сравнить</a>
 
     </div>
 </div>
-<div class="container">
-    <div class="row">
-        <div class="col-sm">
-            описание
-            {{info_phone}}
-            {% for info in info_phone.values %}
-                <p>{{info}}</p>
-            {% endfor %}
-        </div>
-        <div class="col-sm">
-            описание
+
+{% if info_phone %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                описание
+                {{info_phone}}
+                <p>{{info_phone.model_name}}</p>
+                <p>{{info_phone.brand}}</p>
+                <p>{{info_phone.processor}}</p>
+            </div>
+            <div class="col-sm">
+                описание
+            </div>
         </div>
     </div>
-</div>
+{% endif%}
 
 {% endblock %}

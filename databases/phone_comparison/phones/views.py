@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from .models import Phone, Asus, Nokia, Xiaomi
 from django.http import HttpResponse
 
@@ -16,18 +16,19 @@ def show_catalog(request):
     )
 
 
-def compression_phones(request):
+def compression_phones(request, *args, **kwargs):
     # phones = Nokia.objects.all()
     phones = Phone.get_all_phones()
     context = {'phones': phones}
-    if request.GET.get('number_phone'):
+    if request.GET.get('number_phone'): #?number_phone=4
         # print('попадение', request.GET.get('number_phone'))
         num = request.GET.get('number_phone')
 
         print('номер телефона', num)
         info_phone = Phone.objects.get(pk=num)
         context['info_phone'] = info_phone
-        print('info_phone', info_phone)
+        print('info_phone', dir(info_phone))
+
 
     print(context)
     return render(
