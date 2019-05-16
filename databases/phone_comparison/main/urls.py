@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from phones.views import show_catalog, compression_phones
+from phones.views import show_catalog, compression_phones, ajax
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', show_catalog, name='show_catalog'),
     path('compression_phones/', compression_phones, name='compression_phones'),
+    path('ajax/', ajax, name='ajax')
 ]

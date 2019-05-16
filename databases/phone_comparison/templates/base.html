@@ -29,22 +29,24 @@
 
 
     <script type="text/javascript">
-        // var data;
-        // $('.form_phone1').on('change', function() {
-        //       data = {
-        //           'number_phone' : this.value
-        //       }
-        //       return $.ajax({
-        //           url: '/compression_phones/',
-        //           type: 'get',
-        //           data: data,
-        //           success: function() {
-        //               console.log('успех');
-        //
-        //         }
-        //
-        //       })
-        // });
+        var data;
+        $('.form_phone1').on('change', function() {
+              data = {
+                  'number_phone' : this.value
+              }
+              return $.ajax({
+                  url: '/ajax/',
+                  // dataType: text,
+                  type: 'get',
+                  data: data,
+                  success: function(data) {
+                      $('.ajaxes').html(data);
+                      console.log('пришло ' + data);
+
+                }
+
+              })
+        });
 
 // another way
     $('a#compression').on('click', function() {
@@ -55,14 +57,14 @@
             'phone_1' : $('select.form_phone1').val(),
             'phone_2' : $('select.form_phone2').val()
         }
-        return $.ajax({
-            url: '/compression_phones/',
-            type: 'get',
-            data: data,
-            success: function() {
-                console.log('успех');
-          }
-       })
+       //  return $.ajax({
+       //      url: '/compression_phones/',
+       //      type: 'get',
+       //      data: data,
+       //      success: function() {
+       //          console.log('успех');
+       //    }
+       // })
     })
     </script>
     <!--JavaScript at end of body for optimized loading-->

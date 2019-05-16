@@ -18,7 +18,7 @@ def compression_phones(request, *args, **kwargs):
     phones = Phone.get_all_phones()
     context = {'phones': phones}
     print('calllll')
-    if request.GET.get('phone1'): 
+    if request.GET.get('phone1'):
         num1 = request.GET.get('phone1')
         num2 = request.GET.get('phone2')
         info_phone1 = Phone.objects.get(pk=num1)
@@ -31,3 +31,8 @@ def compression_phones(request, *args, **kwargs):
         'compression_phones.html',
         context=context
     )
+
+
+def ajax(request):
+    print('ajax 11111111111111111111')
+    return HttpResponse('<h6>Hello</h6>')
