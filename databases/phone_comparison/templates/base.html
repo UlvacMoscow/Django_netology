@@ -38,11 +38,12 @@
               return $.ajax({
                   url: '/ajax/',
                   // dataType: text,
+                  datatype: 'json',
                   type: 'get',
                   data: data,
                   success: function(data) {
-                      $('.ajaxes').html(data.brand);
-                      console.log('пришло ' + data);
+                      $('.ajaxes').html(data.model_name1);
+                      console.log('пришло ' + typeof(data));
 
                 }
 

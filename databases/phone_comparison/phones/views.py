@@ -43,9 +43,14 @@ def ajax(request):
         info_phone1 = Phone.objects.get(pk=num1)
         info_phone2 = Phone.objects.get(pk=num2)
         print('2222 ', info_phone1.brand)
+        test = {"model_name1" : str(info_phone1.model_name),
+                "brand" : str(info_phone1.brand)
+                }
+        test = json.dumps(test)
+        print('json ', test)
         # return HttpResponse({'brand' : info_phone1.brand})
         # return JsonResponse({'brand' : info_phone1.brand})
-        return render({'brand' : info_phone1.brand})
+        return HttpResponse(test, content_type='application/json')
     print('ajax 11111111111111111111')
     # print(request.GET.get('phone_1'))
     return HttpResponse('<h6>Hello</h6>')
