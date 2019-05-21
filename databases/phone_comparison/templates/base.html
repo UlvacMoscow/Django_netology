@@ -30,7 +30,9 @@
 
     <script type="text/javascript">
         var data;
-        $('.form_phone1').on('change', function() {
+        $('.form_phone1').on('change', get_info);
+        $('.form_phone2').on('change', get_info);
+        function get_info() {
             data = {
                 'phone_1' : $('select.form_phone1').val(),
                 'phone_2' : $('select.form_phone2').val()
@@ -42,20 +44,24 @@
                   type: 'get',
                   data: data,
                   success: function(data) {
-                      $('.ajaxes').html(data.model_name1);
+                      $('.model1').text(data.model_name);
+                      $('.brand1').text(data.brand);
+                      $('.processor1').text(data.processor);
+                      $('.model2').text(data.model_name2);
+                      $('.brand2').text(data.brand2);
+                      $('.processor2').text(data.processor2);
                       console.log('пришло ' + typeof(data));
 
                 }
 
               })
-        });
+        };
 
-// another way
-    // $('a#compression').on('click', function() {
-    //     console.log($('select.form_phone1').val());
-    //     console.log($('select.form_phone2').val());
-    //     $('a#compression').attr('href', `?phone1=${$('select.form_phone1').val()}&phone2=${$('select.form_phone2').val()}`);
-    // })
+    $('a#compression').on('click', function() {
+        console.log($('select.form_phone1').val());
+        console.log($('select.form_phone2').val());
+        $('a#compression').attr('href', `?phone1=${$('select.form_phone1').val()}&phone2=${$('select.form_phone2').val()}`);
+    })
     </script>
     <!--JavaScript at end of body for optimized loading-->
 

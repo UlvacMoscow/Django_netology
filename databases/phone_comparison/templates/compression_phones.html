@@ -1,18 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<script type="text/javascript">
-    const form_phone = document.getElementsByClassName('form_phone');
-
-    function spam() {
-        alert('11111111111');
-    }
-
-    for (const phone of form_phone) {
-        phone.addEventListener('onchange', spam);
-    }
-
-</script>
 
 <div class="container">
     <div class="row">
@@ -36,27 +24,21 @@
     </div>
 </div>
 
-{% if info_phone1 %}
     <div class="container">
         <div class="row">
             <div class="col-sm">
                 {{info_phone1}}
-                <p>{{info_phone1.model_name}}</p>
-                <p>{{info_phone1.brand}}</p>
-                <p>{{info_phone1.processor}}</p>
+                <p class="model1">{{info_phone1.model_name}}</p>
+                <p class="brand1">{{info_phone1.brand}}</p>
+                <p class="processor1">{{info_phone1.processor}}</p>
             </div>
             <div class="col-sm">
                 {{info_phone2}}
-                <p>{{info_phone2.model_name}}</p>
-                <p>{{info_phone2.brand}}</p>
-                <p>{{info_phone2.processor}}</p>
+                <p class="model2">{{info_phone2.model_name}}</p>
+                <p class="brand2">{{info_phone2.brand}}</p>
+                <p class="processor2">{{info_phone2.processor}}</p>
             </div>
         </div>
     </div>
-{% endif%}
-
-<div class="ajaxes">
-
-</div>
 
 {% endblock %}
