@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from books.views import BookListView, BookFilterDate
+from books.views import BookListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('books/', BookListView.as_view()),
-    path('books/<str:date>/', BookFilterDate.as_view())
+    path('books/<str:date>/', BookListView.as_view())
 ]
